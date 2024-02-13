@@ -6,15 +6,28 @@ import {
   Pressable,
   StyleSheet,
 } from 'react-native';
-import React from 'react';
-import MoviesObjLists from '../mock/movies.json';
+import React, { useState, useEffect } from 'react';
+//useState for collection data from api
+//useEffect for call api before show data
+//mport MoviesObjLists from '../mock/movies.json';
 const MovieList = ({navigation}) => {
+
+  const [MoviesObjLists, setMovies] = useState([])
+
+  useEffect(()=>{
+    fetch('https://www.majorcineplex.com/apis/get_movie_avaiable')
+    .then(res => res.json())
+    .then((result)=> {
+      setMovies(result.movies)
+    })
+  },[])
+
   const pressDetail = (id) => {
     navigation.navigate('Detail', {id: id});
   };
   return (
     <ScrollView style={{padding: 10}}>
-      {MoviesObjLists.movies.map(m => (
+      {MoviesObjLists.map(m => (
         <View style={{marginBottom: 10}} key={m.id}>
           <Pressable onPress={()=> pressDetail(m.id)}>
             <Image

@@ -22,7 +22,7 @@ const App = () => {
           component={MovieList}
           options={{title: 'NOW SHOWING'}}
         />
-        <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Detail" component={Detail} options={{title: 'เนื้อเรื่อง'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

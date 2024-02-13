@@ -1,15 +1,24 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import React from 'react';
-import MoviesObjLists from '../mock/movies.json';
+import React, { useState, useEffect } from 'react';
+//import MoviesObjLists from '../mock/movies.json';
 const Detail = ({navigation, route}) => {
-  let movie = MoviesObjLists.movies.find(m => m.id === route.params.id);
-  console.log(movie);
+
+  const [movie, setMovies] = useState([])
+
+  useEffect(()=>{
+    fetch('https://www.majorcineplex.com/apis/get_movie_avaiable')
+    .then(res => res.json())
+    .then((result)=> {
+      const movie = result.movies.filter(m => m.id === route.params.id);
+      setMovies(movie[0])
+    })
+  },[])
   return (
     <View>
       <Image
         style={styles.coverImage}
         source={{
-          uri: movie.poster_url,
+          uri: movie.poster_url
         }}
       />
       <View style={styles.textBox}>

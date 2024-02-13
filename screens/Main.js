@@ -2,7 +2,7 @@ import {View, Text, Image, Pressable, Alert} from 'react-native';
 import React from 'react';
 
 const Splash = ({ navigation }) => {
-  //Pressable use for redirect Splash page to Home page
+  //Pressable use for redirect MovieList page to Main page
 
   const onPress = () => {
     navigation.navigate('MovieList')
