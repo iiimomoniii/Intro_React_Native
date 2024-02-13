@@ -1,22 +1,33 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
-
-const images = {
-    1 : require('../static/img/1.jpg'),
-    2 : require('../static/img/2.jpg'),
-    3 : require('../static/img/3.jpg')
-}
-
+import MoviesObjLists from '../mock/movies.json';
 const Detail = ({navigation, route}) => {
+  let movie = MoviesObjLists.movies.find(m => m.id === route.params.id);
+  console.log(movie);
   return (
     <View>
       <Image
-        source={images[route.params.id]}
-        style={{height: 333, width: '100%'}}
+        style={styles.coverImage}
+        source={{
+          uri: movie.poster_url,
+        }}
       />
-      <Text style={{ fontSize:20, marginTop:10 , padding :10}}>{route.params.name}</Text>
+      <View style={styles.textBox}>
+        <Text style={{ fontSize:25 }}>{movie.title_th}</Text>
+        <Text style={{ paddingTop:10 , fontSize:20}}>{movie.synopsis_th}</Text>
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  coverImage: {
+    width: '100%',
+    height: 300,
+  },
+  textBox: {
+    margin: 5,
+  },
+});
 
 export default Detail;

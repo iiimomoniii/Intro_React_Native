@@ -5,10 +5,11 @@ const Splash = ({ navigation }) => {
   //Pressable use for redirect Splash page to Home page
 
   const onPress = () => {
-    navigation.navigate('Home')
+    navigation.navigate('MovieList')
   }
 
   return (
+   
     <Pressable onPress={onPress}>
       <View
         style={{
@@ -18,12 +19,12 @@ const Splash = ({ navigation }) => {
         }}>
         <View style={{flex: 0.95, justifyContent: 'center'}}>
           <Image
-            source={require('../../Movie/static/img/logo.png')}
-            style={{height: 300, width: 280}}
+            source={require('../../Movie/static/img/major_logo.jpeg')}
+            style={{ width: 400}}
           />
         </View>
         <View style={{flex: 0.05}}>
-          <Text style={{color: 'white'}}>MyCompany</Text>
+          <Text style={{color: 'white'}}>@ Major Cineplex</Text>
         </View>
       </View>
     </Pressable>

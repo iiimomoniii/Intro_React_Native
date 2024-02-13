@@ -4,8 +4,8 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Splash from './screens/Splash'
-import Home from './screens/Home';
+import Main from './screens/Main'
+import MovieList from './screens/MovieList';
 import Detail from './screens/Detail';
 const Stack = createNativeStackNavigator();
 
@@ -14,13 +14,13 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Splash"
-          component={Splash}
+          name="Main"
+          component={Main}
           options={{ headerShown: false }} />
         <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: 'Welcome' }}
+          name="MovieList"
+          component={MovieList}
+          options={{title: 'NOW SHOWING'}}
         />
         <Stack.Screen name="Detail" component={Detail} />
       </Stack.Navigator>
